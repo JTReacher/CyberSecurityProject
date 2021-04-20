@@ -6,7 +6,8 @@ class User
     private $studentName;
     private $studentNumber; //Brookes student number. Will be validated to ensure it's unique
     private $password;
-    private $modules = [];
+    //TODO: No, use student number as a foreign key in a UsersModulesTable with many to one relationship
+    private $modules = []; 
     
     //calculated from other table
     private $totalCreditsAchieved;
@@ -15,6 +16,7 @@ class User
     private $meritDistinctionOrPass;
 
     //TODO: Write constructor
+    
 
     function getStudentName($studentName)
     {
