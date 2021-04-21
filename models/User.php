@@ -2,12 +2,11 @@
 class User
 {
 
-
     private $studentName;
-    private $studentNumber; //Brookes student number. Will be validated to ensure it's unique
+    private $studentNumber; //TODO: Brookes student number. Will be validated to ensure it's unique
     private $password;
     //TODO: No, use student number as a foreign key in a UsersModulesTable with many to one relationship
-    private $modules = []; 
+    
     
     //calculated from other table
     private $totalCreditsAchieved;
@@ -15,8 +14,13 @@ class User
     private $averageMark;
     private $meritDistinctionOrPass;
 
-    //TODO: Write constructor
-    
+    function __construct($studentName, $studentNumber, $password)
+    {
+        $this->$studentName = $studentName;
+        $this->$studentNumber = $studentNumber;
+        $this->$password = $password;
+    }
+
 
     function getStudentName($studentName)
     {
@@ -58,6 +62,19 @@ class User
 
 
 
+    /*
+    TODO: Implement
+
+    1. How many A, B, C or F grades have been obtained by a student?
+    -> SQL query returning this info as a  count
+    2. How many credits have been earned by student? i.e. count credits of passing modules
+    3. What is the award qualification? Based on number of credits achieved apparently
+    - 180 credits for  MSc computing Science
+    - 120 credits for PG Diploma in computing
+    4. Total average marks of all of the modules
+    5. Based on the average marks, classify  the degree as pass, merit or distinction
+        -See the brief for further conditions
+    */
 
 
 
