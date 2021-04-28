@@ -5,7 +5,7 @@
 <html>
 <head><title>Add Module</title></head>
 <body>
-<h2>Form for adding module info</h2>
+<h2>Form for adding module info. When you have added your marks for each module go to academic record</h2>
 <!-- TODO: Add module controller for this form to call -->
 <form action="ModuleController.php" method="post">
 <!-- create radio buttons -->

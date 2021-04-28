@@ -7,18 +7,6 @@ session_start();
 $studentNumber = $_SESSION["username"];
 
 
-
-/*
-    TODO: Implement
-
-
-    1. How many A, B, C or F grades have been obtained by a student?
-    -> SQL query returning this info as a  count for each type of grade
-    */
-
-//$_SESSION["username"];
-//Sum credits column where pass is true and username is username
-
 $connection = mysqli_connect($db_host, $db_username, $db_password, $db_database);
 
 //Fetch and set number credits earned
@@ -64,16 +52,47 @@ if ($totalAverageMarks >= 60 && $totalAverageMarks < 70 && $dissertationMark >= 
 }
 
 
-//Count of A, B, C, F grades each student got.
+//Count of A, B, C, F grades student got.
+$countA;
+$countB;
+$countC;
+$countF;
+
+$gradeAQuery = "SELECT COUNT(grade) FROM `modules` WHERE studentNumber = '$studentNumber' AND grade = 'A'";
+$query = mysqli_query($connection, $gradeAQuery);
+$row = mysqli_fetch_array($query);
+$countA = $row['COUNT(grade)'];
+
+$gradeBQuery = "SELECT COUNT(grade) FROM `modules` WHERE studentNumber = '$studentNumber' AND grade = 'B'";
+$query = mysqli_query($connection, $gradeBQuery);
+$row = mysqli_fetch_array($query);
+$countB = $row['COUNT(grade)'];
+
+$gradeCQuery = "SELECT COUNT(grade) FROM `modules` WHERE studentNumber = '$studentNumber' AND grade = 'C'";
+$query = mysqli_query($connection, $gradeCQuery);
+$row = mysqli_fetch_array($query);
+$countC = $row['COUNT(grade)'];
+
+$gradeFQuery = "SELECT COUNT(grade) FROM `modules` WHERE studentNumber = '$studentNumber' AND grade = 'F'";
+$query = mysqli_query($connection, $gradeFQuery);
+$row = mysqli_fetch_array($query);
+$countF = $row['COUNT(grade)'];
+
 
 echo $creditsEarned;
 echo $qualificationAward;
 echo $totalAverageMarks;
 echo $dissertationMark;
 echo $meritDistinctionPassFail;
+echo $countA;
+echo $countB;
+echo $countC;
+echo $countF;
+
 
 
 mysqli_close($connection);
 
 ?>
+
 

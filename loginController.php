@@ -6,22 +6,6 @@ include('db_login.php');
 $connection = mysqli_connect($db_host, $db_username, $db_password, $db_database);
 
 
-//Need logic to redirect to login page if the password or username are wrong
-//Check if user is loggedin, if yes redirect
-//Add validation to ensure those fields are filled (just do this with html5 in the form)
-
-//Fetch the corresponding user by username
-//This gives me that users info as an array
-//Prepare the SQL stmt to prevent SQL injection attacks
-
-//What do I actually need?
-
-//1. Fetch the right user/row based on username
-//2. Save password and username from that row to variables
-//3. Compare them to inputted data using password verify
-//4. Start session with them logged-in if it works 
-
-
 $username = $_POST['username'];
 $password = $_POST['password'];
 
