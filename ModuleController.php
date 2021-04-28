@@ -47,14 +47,15 @@ $create_table_query_string = 'CREATE TABLE `modules` (
     `credits` INT,
     `moduleName` VARCHAR(255),
     `pass` INT NOT NULL,
+    `grade` VARCHAR(4),
     `createdDate` DATETIME DEFAULT CURRENT_TIMESTAMP
     )';
 $query = mysqli_query($connection, $create_table_query_string);
 
 
 
-$insert_rows_query_string = "insert into modules (studentNumber, moduleId, markAchieved, credits, moduleName, pass)
-values ('$studentNumber', '$ModuleId', '$markachieved', '$credits', '$moduleName', '$pass')";
+$insert_rows_query_string = "insert into modules (studentNumber, moduleId, markAchieved, credits, moduleName, pass, grade)
+values ('$studentNumber', '$ModuleId', '$markachieved', '$credits', '$moduleName', '$pass', '$grade')";
 
 $query = mysqli_query($connection, $insert_rows_query_string);
 
