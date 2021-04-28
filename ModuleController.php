@@ -1,7 +1,8 @@
 <?php
 
-// <!-- Takes in details from add module form, instantiates and calls methods, then stores in db. -->
 
+// <!-- Takes in details from add module form, instantiates and calls methods, then stores in db. -->
+session_start();
 include('db_login.php');
 include('Module.php');
 
@@ -51,18 +52,12 @@ $create_table_query_string = 'CREATE TABLE `modules` (
 $query = mysqli_query($connection, $create_table_query_string);
 
 
-//TODO: Add some error checking
-/* if ($query) {
-    echo "Create Table Query Succeeded<br>";
-} else {
-    echo "Create Table Query Failed<br>";
-} */
-
 
 $insert_rows_query_string = "insert into modules (studentNumber, moduleId, markAchieved, credits, moduleName, pass)
 values ('$studentNumber', '$ModuleId', '$markachieved', '$credits', '$moduleName', '$pass')";
 
 $query = mysqli_query($connection, $insert_rows_query_string);
+
 
 
 mysqli_close($connection);

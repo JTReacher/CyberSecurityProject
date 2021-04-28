@@ -49,7 +49,7 @@ if (password_verify($password, $passwordHash)) {
     $_SESSION["id"] = $id;
     $_SESSION["username"] = $username;
 
-    header("location: addmodule.html");
+    header("location: addmodule.php");
 
 
 } else{
