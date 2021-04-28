@@ -1,6 +1,7 @@
 <?php
 
-class module {
+
+class Module {
 
     const TotalMarksAvailable = 100;
 

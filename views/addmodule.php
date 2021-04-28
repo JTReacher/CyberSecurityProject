@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <html>
 <head><title>Add Module</title></head>
 <body>

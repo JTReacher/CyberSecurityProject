@@ -1,6 +1,10 @@
 <?php
+
+include('db_login.php');
+
 class User
 {
+
 
     private $studentName;
     private $studentNumber; //TODO: Brookes student number. Will be validated to ensure it's unique
@@ -16,31 +20,31 @@ class User
 
     function __construct($studentName, $studentNumber, $password)
     {
-        $this->$studentName = $studentName;
-        $this->$studentNumber = $studentNumber;
-        $this->$password = $password;
+        $this->studentName = $studentName;
+        $this->studentNumber = $studentNumber;
+        $this->password = $password;
     }
 
 
-    function getStudentName($studentName)
+    function getStudentName()
     {
-        return $this->$studentName;
+        return $this->studentName;
     }
     function setStudentName($studentName)
     {
         $this->studentName = $studentName;
     }
-    function getStudentNumber($studentNumber)
+    function getStudentNumber()
     {
-        return $this->$studentNumber;
+        return $this->studentNumber;
     }
     function setStudentNumber($studentNumber)
     {
         $this->studentNumber = $studentNumber;
     }
-    function getPassword($password)
+    function getPassword()
     {
-        return $this->$password;
+        return $this->password;
     }
     function setPassword($password)
     {
@@ -49,17 +53,21 @@ class User
 
     //TODO: fix the logic arround the array
     //Will need to get and set the modules as a list
-    function getModules($modules)
+    function getModules()
     {
-        return $this->$modules;
+        return $this->modules;
     }
     function setModules($modules)
     {
         $this->modules = $modules;
     }
-    
 
+   /*  private $totalCreditsAchieved;
+    private $qualificationAward;
+    private $averageMark;
+    private $meritDistinctionOrPass; */
 
+    function get
 
 
     /*
@@ -67,7 +75,7 @@ class User
 
     1. How many A, B, C or F grades have been obtained by a student?
     -> SQL query returning this info as a  count
-    2. How many credits have been earned by student? i.e. count credits of passing modules
+    2. How many credits have been earned by student? i.e. sum credits of passing modules
     3. What is the award qualification? Based on number of credits achieved apparently
     - 180 credits for  MSc computing Science
     - 120 credits for PG Diploma in computing
