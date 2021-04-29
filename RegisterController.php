@@ -48,5 +48,5 @@ $query = mysqli_query($connection, $insert_rows_query_string);
 
 mysqli_close($connection);
 
-header("location: login");
+header("location: login.php");
 

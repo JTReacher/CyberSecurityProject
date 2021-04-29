@@ -79,6 +79,7 @@ $row = mysqli_fetch_array($query);
 $countF = $row['COUNT(grade)'];
 
 
+
 echo $creditsEarned;
 echo $qualificationAward;
 echo $totalAverageMarks;

@@ -1,8 +1,11 @@
 <?php
 
 
-// <!-- Takes in details from add module form, instantiates and calls methods, then stores in db. -->
 session_start();
+if (!$_SESSION['loggedin']) {
+    header("location: login.php");
+}
+
 include('db_login.php');
 include('Module.php');
 

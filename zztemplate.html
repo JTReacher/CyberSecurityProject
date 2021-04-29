@@ -1,12 +1,5 @@
-<?PHP
-
-session_start();
-if (!$_SESSION['loggedin']) {
-    header("location: login.php");
-}
-
-?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -32,11 +25,7 @@ if (!$_SESSION['loggedin']) {
     </nav>
     <!-- Content -->
     <div class="container">
-        
-        
-    </div>
-    <div class="container">
-        <footer class="footer-clean fixed-bottom">
+        <footer class="footer-clean fixed-bottom" >
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-3 item social">
@@ -48,5 +37,4 @@ if (!$_SESSION['loggedin']) {
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
-
 </html>

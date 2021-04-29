@@ -1,6 +1,9 @@
 <?php
 
-//TODO: Need some logic to check if user is alread in a session or not
+session_start();
+if (!$_SESSION['loggedin']) {
+    header("location: login.php");
+}
 
 include('db_login.php');
 $connection = mysqli_connect($db_host, $db_username, $db_password, $db_database);
@@ -39,7 +42,6 @@ if (password_verify($password, $passwordHash)) {
 } else{
     header("location: login.php");
 }
-
 
 
 
