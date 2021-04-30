@@ -22,7 +22,7 @@ session_start();
         function validateLoginForm() {
             var username = document.forms["loginForm"]["username"].value;
             var password = document.forms["loginForm"]["password"].value;
-
+            
             if (username == null || username == "") {
                 alert("You must specify your username or use register to create an account");
                 return false;

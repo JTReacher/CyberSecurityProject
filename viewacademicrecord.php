@@ -2,6 +2,14 @@
 
 include('db_login.php');
 session_start();
+if (!$_SESSION['loggedin']) {
+    header("location: login.php");
+}
+if (time() - $_SESSION["login_time"] > 1800) {
+    session_unset();
+    session_destroy();
+    header("location:login.php");
+}
 
 $studentNumber = $_SESSION["username"];
 
@@ -33,10 +41,24 @@ $row = mysqli_fetch_array($query);
 $totalAverageMarks = $row['ROUND(AVG(markAchieved))'];
 
 //Fetch mark for disseration module separately
-$dissertationMarkQuery = "SELECT markAchieved FROM `modules` WHERE studentNumber = '$studentNumber' AND moduleId = 'TECH7009'";
-$query = mysqli_query($connection, $dissertationMarkQuery);
+
+$check_if_in_db_query_string = "SELECT COUNT(moduleId) FROM `modules` WHERE studentNumber = '$studentNumber' AND moduleId = 'TECH7009';";
+$query = mysqli_query($connection, $check_if_in_db_query_string);
 $row = mysqli_fetch_array($query);
-$dissertationMark = $row['markAchieved'];
+$moduleCount = $row['COUNT(moduleId)'];
+
+if ($moduleCount != 1) {
+    $dissertationMark = 0;
+} else {
+    $dissertationMarkQuery = "SELECT markAchieved FROM `modules` WHERE studentNumber = '$studentNumber' AND moduleId = 'TECH7009'";
+    $query = mysqli_query($connection, $dissertationMarkQuery);
+    $row = mysqli_fetch_array($query);
+    $dissertationMark = $row['markAchieved'];
+}
+
+
+
+
 
 $meritDistinctionPassFail = "";
 //Set degree classification
@@ -76,6 +98,11 @@ $gradeFQuery = "SELECT COUNT(grade) FROM `modules` WHERE studentNumber = '$stude
 $query = mysqli_query($connection, $gradeFQuery);
 $row = mysqli_fetch_array($query);
 $countF = $row['COUNT(grade)'];
+
+
+$fetchAllModulesQuery = "SELECT * FROM `modules` WHERE studentNumber = '$studentNumber'";
+$query = mysqli_query($connection, $fetchAllModulesQuery);
+$row = mysqli_fetch_array($query);
 
 
 
@@ -139,10 +166,14 @@ mysqli_close($connection);
                     <td><?php echo $countB; ?></td>
                     <td><?php echo $countC; ?></td>
                     <td><?php echo $countF; ?></td>
-
                 </tr>
             </tbody>
         </table>
+        <?php
+        //print php table of component modules
+        
+
+        ?>
     </div>
     <div class="container">
         <footer class="footer-clean fixed-bottom">

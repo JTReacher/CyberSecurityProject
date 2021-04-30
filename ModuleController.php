@@ -61,11 +61,33 @@ $create_table_query_string = 'CREATE TABLE `modules` (
 $query = mysqli_query($connection, $create_table_query_string);
 
 
+//Check if there is a record for x student id and x module
+//If 1 record then delete that row
+//then overwrite that row
 
-$insert_rows_query_string = "insert into modules (studentNumber, moduleId, markAchieved, credits, moduleName, pass, grade)
-values ('$studentNumber', '$ModuleId', '$markachieved', '$credits', '$moduleName', '$pass', '$grade')";
+$check_if_in_db_query_string = "SELECT COUNT(moduleId) FROM `modules` WHERE studentNumber = '$studentNumber' AND moduleId = '$ModuleId';";
+$query = mysqli_query($connection, $check_if_in_db_query_string);
+$row = mysqli_fetch_array($query);
+$moduleCount = $row['COUNT(moduleId)'];
 
-$query = mysqli_query($connection, $insert_rows_query_string);
+if ($moduleCount == 0) {
+    $insert_rows_query_string = "insert into modules (studentNumber, moduleId, markAchieved, credits, moduleName, pass, grade)
+    values ('$studentNumber', '$ModuleId', '$markachieved', '$credits', '$moduleName', '$pass', '$grade')";
+    $query = mysqli_query($connection, $insert_rows_query_string);
+} else {
+    //Delete all rows and then replace
+
+    $delete_module_query = "DELETE FROM `modules` WHERE studentNumber = '$studentNumber' AND moduleId = '$ModuleId';";
+    $query = mysqli_query($connection, $delete_module_query);
+
+
+    $insert_rows_query_string = "insert into modules (studentNumber, moduleId, markAchieved, credits, moduleName, pass, grade)
+    values ('$studentNumber', '$ModuleId', '$markachieved', '$credits', '$moduleName', '$pass', '$grade')";
+    $query = mysqli_query($connection, $insert_rows_query_string);
+}
+
+
+
 
 
 

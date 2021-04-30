@@ -69,7 +69,7 @@ if (time() - $_SESSION["login_time"] > 1800) {
                 <section class="login-clean">
                     <form action="ModuleController.php" method="post" accept-charset="utf-8" name="moduleForm" onsubmit="return validateModuleForm()">
                         <!-- create radio buttons -->
-                        <p>Module: Select module and input information <br><br>
+                        <p>Module: Select module and input information (to add or to overwrite) <br><br>
                             <input type="radio" name="moduleId" value="COMP7001">COMP7001 </input>
                             <input type="radio" name="moduleId" value="COMP7002">COMP7002</input>
                             <input type="radio" name="moduleId" value="TECH7005">TECH7005</input>
