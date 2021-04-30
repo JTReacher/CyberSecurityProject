@@ -18,10 +18,19 @@ session_start();
     <link rel="stylesheet" href="assets/css/Footer-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-
     <script>
+        function validateLoginForm() {
+            var username = document.forms["loginForm"]["username"].value;
+            var password = document.forms["loginForm"]["password"].value;
 
-
+            if (username == null || username == "") {
+                alert("You must specify your username or use register to create an account");
+                return false;
+            } else if (password == null || password == "") {
+                alert("You must specify a password");
+                return false;
+            }
+        }
     </script>
 </head>
 
@@ -35,10 +44,10 @@ session_start();
         <div class="row h-100 justify-content-center align-items-center">
             <div class="align-self-center">
                 <section class="login-clean">
-                    <form action="loginController.php" method="post" accept-charset="utf-8">
+                    <form action="loginController.php" method="post" accept-charset="utf-8" name="loginForm" onsubmit="return validateLoginForm()">
                         <h2 class="sr-only">Login Form</h2>
-                        <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Brookes Student Id" required /></div>
-                        <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" required /></div>
+                        <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Brookes Student Id"  /></div>
+                        <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"   /></div>
                         <div class="form-group"><button class="btn btn-primary btn-block" type="submit" value="Login" style="background: #2699FB;" />Log In</button>
                             <a href="register.php">Register</a>
                     </form>
