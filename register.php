@@ -21,31 +21,27 @@
         <div class="container"><a class="navbar-brand" href="https://www.brookes.ac.uk/">Oxford Brookes</a>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link active" href="addmodule.php">Add Module</a></li>
-                    <li class="nav-item"><a class="nav-link" href="viewacademicrecord.php">View Academic Record</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <h2>Form for registering user</h2>
     <!-- TODO: Add register controller for this form to call -->
-    <form action="RegisterController.php" method="post">
-        <p>
-        <h2>Enter your full name</h2>
-        <input type="text" name=fullname>
-        </p>
-        <h2>Enter your Brookes student Id. This will be your username</h2>
-        <p>
-            <input type="text" name=BrookesStudentId>
-        </p>
-        <h2>Enter your password of choice</h2>
-        <p>
-            <input type="text" name=password>
-        </p>
-        <input type="submit" name="submit" value="Submit Form"><br>
-    </form>
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="align-self-center">
+                <h5>Please register a user account</h5>
+                <section class="login-clean">
+                    <form action="RegisterController.php" method="post">
+                        <h2 class="sr-only">Login Form</h2>
+                        <div class="form-group"><input class="form-control" type="text" name="fullname" placeholder="Full Name" required /></div>
+                        <div class="form-group"><input class="form-control" type="text" name="BrookesStudentId" placeholder="Brookes Student Id" required /></div>
+                        <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" required /></div>
+                        <div class="form-group"><input class="btn btn-primary btn-block" type="submit" value="Register" style="background: #2699FB;" /></button>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <footer class="footer-clean fixed-bottom">
             <div class="container">
