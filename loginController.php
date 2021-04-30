@@ -1,9 +1,7 @@
 <?php
 
 session_start();
-if (!$_SESSION['loggedin']) {
-    header("location: login.php");
-}
+
 
 include('db_login.php');
 $connection = mysqli_connect($db_host, $db_username, $db_password, $db_database);
@@ -35,6 +33,7 @@ if (password_verify($password, $passwordHash)) {
     $_SESSION["loggedin"] = true;
     $_SESSION["id"] = $id;
     $_SESSION["username"] = $username;
+    $_SESSION["login_time"] = time();
 
     header("location: addmodule.php");
 

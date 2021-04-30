@@ -4,6 +4,11 @@ session_start();
 if (!$_SESSION['loggedin']) {
     header("location: login.php");
 }
+if (time() - $_SESSION["login_time"] > 1800) {
+    session_unset();
+    session_destroy();
+    header("location:login.php");
+}
 
 ?>
 
@@ -19,6 +24,29 @@ if (!$_SESSION['loggedin']) {
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 
+    <script>
+        function validateModuleForm() {
+            var markAchieved = document.forms["moduleForm"]["markAchieved"].value;
+            var moduleId = document.forms["moduleForm"]["moduleId"].value;
+
+
+
+            if (markAchieved == null || markAchieved == "") {
+                alert("You must specify the mark achieved for this module");
+                return false;
+            } else if (markAchieved < 0 || markAchieved > 100) {
+                alert("The mark must be between 0 and 100");
+                return false;
+            } else if (moduleId == null || moduleId == "") {
+                alert("You must select a module code");
+                return false;
+
+            }
+
+
+
+        }
+    </script>
 </head>
 
 <body>
@@ -39,7 +67,7 @@ if (!$_SESSION['loggedin']) {
         <div class="row h-50 justify-content-center">
             <div class="align-self-center">
                 <section class="login-clean">
-                    <form action="ModuleController.php" method="post">
+                    <form action="ModuleController.php" method="post" accept-charset="utf-8" name="moduleForm" onsubmit="return validateModuleForm()">
                         <!-- create radio buttons -->
                         <p>Module: Select module and input information <br><br>
                             <input type="radio" name="moduleId" value="COMP7001">COMP7001 </input>
@@ -53,7 +81,7 @@ if (!$_SESSION['loggedin']) {
                         </p>
                         <!-- create dropdown list -->
                         <p>Mark Achieved in module: <br><br>
-                            <input type="number" min=0 max=100 name=markAchieved>
+                            <input type="number" name=markAchieved>
                         </p>
                         <input type="submit" name="submit" value="Submit Form"><br>
                     </form>

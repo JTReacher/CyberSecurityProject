@@ -2,6 +2,7 @@
 
 
 
+
 ?>
 
 <html>
@@ -14,6 +15,28 @@
     <link rel="stylesheet" href="assets/css/Footer-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+
+    <script>
+        function validateRegisterForm() {
+            var fullname = document.forms["registerForm"]["fullname"].value;
+            var BrookesStudentId = document.forms["registerForm"]["BrookesStudentId"].value;
+            var password = document.forms["registerForm"]["password"].value;
+
+            if (fullname == null || fullname == "") {
+                alert("You must provide a name");
+                return false;
+            } else if (password.length < 12) {
+                alert("Passwords must be a minimum of 12 characters");
+                return false;
+            } else if (BrookesStudentId.length != 8) {
+                alert("Brookes Student Id must equal 8 characters");
+                return false;
+            }
+
+
+
+        }
+    </script>
 </head>
 
 <body>
@@ -31,11 +54,11 @@
             <div class="align-self-center">
                 <h5>Please register a user account</h5>
                 <section class="login-clean">
-                    <form action="RegisterController.php" method="post">
+                    <form name="registerForm" action="RegisterController.php" method="post" accept-charset="utf-8" onsubmit="return validateRegisterForm()">
                         <h2 class="sr-only">Login Form</h2>
-                        <div class="form-group"><input class="form-control" type="text" name="fullname" placeholder="Full Name" required /></div>
-                        <div class="form-group"><input class="form-control" type="text" name="BrookesStudentId" placeholder="Brookes Student Id" required /></div>
-                        <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" required /></div>
+                        <div class="form-group"><input class="form-control" type="text" name="fullname" placeholder="Full Name" /></div>
+                        <div class="form-group"><input class="form-control" type="text" name="BrookesStudentId" placeholder="Brookes Student Id" /></div>
+                        <div class="form-group"><input class="form-control" type="password" name="password" maxlength="128" placeholder="Password" /></div>
                         <div class="form-group"><input class="btn btn-primary btn-block" type="submit" value="Register" style="background: #2699FB;" /></button>
                     </form>
                 </section>

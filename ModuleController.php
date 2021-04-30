@@ -5,6 +5,11 @@ session_start();
 if (!$_SESSION['loggedin']) {
     header("location: login.php");
 }
+if (time() - $_SESSION["login_time"] > 1800) {
+    session_unset();
+    session_destroy();
+    header("location:login.php");
+}
 
 include('db_login.php');
 include('Module.php');
@@ -45,7 +50,7 @@ if (mysqli_connect_errno()) {
 $create_table_query_string = 'CREATE TABLE `modules` (
     `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `studentNumber` VARCHAR(255),
-    `moduleId` VARCHAR(255),
+    `moduleId` VARCHAR(255) UNIQUE,
     `markAchieved` INT,
     `credits` INT,
     `moduleName` VARCHAR(255),

@@ -18,6 +18,11 @@ session_start();
     <link rel="stylesheet" href="assets/css/Footer-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+
+    <script>
+
+
+    </script>
 </head>
 
 <body>
@@ -30,7 +35,7 @@ session_start();
         <div class="row h-100 justify-content-center align-items-center">
             <div class="align-self-center">
                 <section class="login-clean">
-                    <form action="loginController.php" method="post">
+                    <form action="loginController.php" method="post" accept-charset="utf-8">
                         <h2 class="sr-only">Login Form</h2>
                         <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Brookes Student Id" required /></div>
                         <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" required /></div>
