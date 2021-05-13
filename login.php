@@ -37,7 +37,6 @@ session_start();
 <body>
 
 
-    <!-- TODO: Add register controller for this form to call -->
     <!-- TODO: Add validation in the form itself -->
 
     <div class="container h-100">

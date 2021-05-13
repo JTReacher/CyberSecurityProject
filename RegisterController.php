@@ -28,7 +28,7 @@ if (mysqli_connect_errno()) {
 
 $create_table_query_string = 'CREATE TABLE `users` (
     `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `username` VARCHAR(255) UNIQUE,
+    `username` VARCHAR(255) ,
     `fullName` VARCHAR(255),
     `passwordHash` VARCHAR(255),
     `totalCreditsAchieved` INT(255),
